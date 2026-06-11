@@ -1,0 +1,48 @@
+{
+  "name": "regulation-chatbot-electron-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "env -u ELECTRON_RUN_AS_NODE electron .",
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "^39.8.10",
+    "electron-builder": "^25.1.8",
+    "playwright": "^1.60.0"
+  },
+  "allowScripts": {
+    "electron@39.8.10": true
+  },
+  "build": {
+    "appId": "com.kjs.regbot",
+    "productName": "RegBot",
+    "artifactName": "RegBot-${version}-${arch}.${ext}",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "extraResources": [
+      {
+        "from": "../../backend/dist/backend",
+        "to": "bin/backend",
+        "filter": ["**/*"]
+      },
+      {
+        "from": "build-resources/seed",
+        "to": "seed",
+        "filter": ["**/*"]
+      }
+    ]
+  }
+}

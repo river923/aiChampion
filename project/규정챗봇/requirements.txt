@@ -1,0 +1,9 @@
+Django>=6.0,<6.1
+django-unfold>=0.97,<1
+cryptography>=48,<49
+python-dotenv>=1.2,<2
+google-genai>=2.8,<3
+openai>=2.41,<3
+anthropic>=0.109,<1
+pytest>=9,<10
+pytest-django>=4.12,<5

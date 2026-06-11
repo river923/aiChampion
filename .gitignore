@@ -1,1 +1,16 @@
 .DS_Store
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Logs and local runtime artifacts
+*.log
+logs/
+.omo/
+
+# Python cache (if any scripts are added)
+__pycache__/
+
+/보고서

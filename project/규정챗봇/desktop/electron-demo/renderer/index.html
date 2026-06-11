@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src http://127.0.0.1:8000 http://localhost:8000; script-src 'self'; style-src 'self';"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>규정챗봇 데모</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="state-logged-out">
+    <!-- 전면 로그인 화면 -->
+    <section id="login-screen" class="login-screen">
+      <div class="login-card">
+        <div class="login-header">
+          <p class="login-subtitle">한국산림복지진흥원</p>
+          <h1 class="login-title">규정챗봇 시스템</h1>
+        </div>
+        <form id="login-form" class="login-card-form">
+          <div class="input-group">
+            <input id="username-input" type="text" autocomplete="username" placeholder="아이디" required />
+          </div>
+          <div class="input-group">
+            <input id="password-input" type="password" autocomplete="current-password" placeholder="비밀번호" required />
+          </div>
+          <p id="login-error-msg" class="login-error-msg"></p>
+          <button type="submit" class="login-submit-btn">로그인</button>
+        </form>
+        <p class="login-footer">담당자: 미래전략본부 ESG성과혁신팀</p>
+      </div>
+    </section>
+
+    <!-- 메인 앱 화면 -->
+    <main class="app-shell" id="app-shell" style="display: none;">
+      <aside class="org-panel">
+        <div class="panel-title-row">
+          <div class="panel-title">조직도</div>
+          <button id="refresh-org-btn" class="refresh-btn" type="button" title="조직도 동기화">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.59-9.21l5.67-1.63"/>
+            </svg>
+          </button>
+        </div>
+        <div class="org-tree" id="org-tree-container">
+          <!-- JS로 동적 생성 -->
+        </div>
+        <div id="character-list-container">
+          <!-- JS로 동적 생성 -->
+        </div>
+      </aside>
+      <section class="chat-panel">
+        <header class="chat-header">
+          <div>
+            <h1>AI 캐릭터 대기중</h1>
+            <p>왼쪽 조직도에서 대화할 AI 직원을 선택해주세요</p>
+          </div>
+        </header>
+        <section id="messages" class="messages" aria-live="polite">
+          <article class="message bot">
+            <p>AI 직원을 선택해주세요.</p>
+          </article>
+        </section>
+        <form id="question-form" class="question-form">
+          <input
+            id="question-input"
+            type="text"
+            autocomplete="off"
+            placeholder="AI 직원을 선택해 주세요."
+            disabled
+          />
+          <button type="submit">질문</button>
+        </form>
+      </section>
+      <aside class="evidence-panel">
+        <div class="panel-title">답변 근거</div>
+        <ul id="citations" class="citation-list">
+          <li>아직 표시할 근거가 없습니다.</li>
+        </ul>
+        <div class="contact-box">
+          <strong>추가 문의</strong>
+          <p>필요 조건을 만족할 때만 담당자 정보가 표시됩니다.</p>
+        </div>
+      </aside>
+    </main>
+    <!-- 근거 전문 모달 -->
+    <div id="citation-modal" class="modal-overlay" style="display: none;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modal-title">근거 조항</h2>
+          <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+        </div>
+        <div class="modal-body" id="modal-body-content">
+          <!-- 전문 내용이 JS로 삽입됨 -->
+        </div>
+      </div>
+    </div>
+
+    <script src="./citation-modal.js"></script>
+    <script src="./renderer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+# Local secrets and runtime data
+.env
+*.env
+db.sqlite3
+*.sqlite
+*.sqlite3
+media/
+data/raw/*
+!data/raw/.gitkeep
+docs/parsed/*
+!docs/parsed/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+backend/build/
+backend/dist/
+
+# Local LLM model files
+backend/models/*.gguf
+
+# Electron / Node
+desktop/electron-demo/node_modules/
+desktop/electron-demo/dist/
+desktop/electron-demo/build-resources/seed/
+
+# OS/editor noise
+.DS_Store
